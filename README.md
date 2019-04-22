@@ -6,4 +6,4 @@
 3. Exp3:神经网络语言模型
 4. Exp4:情感分类
 
-全部代码使用谷歌Colab运行，感谢谷歌。
+全部代码使用谷歌[Colab](https://colab.research.google.com/)运行，感谢谷歌。
