@@ -1,3 +1,4 @@
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 # MNIST数据集
 
 > MNIST 数据集可在 [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/) 获取, 它包含了四个部分:
