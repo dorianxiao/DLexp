@@ -1,2 +1,2 @@
-# DLexp
-Deep Learning experiments of UCAS
+# DLexps
+Deep Learning experiments based on Pytorch
