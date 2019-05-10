@@ -9,7 +9,6 @@ train
 └─validation
    ├─dogs
    └─cats
-
 ```
 + 实验目标：使用TF-slim模块预先构建的InceptionV3进行Fine-tune
 ## 0. 在Colab中准备数据集
@@ -95,7 +94,7 @@ SPLITS_TO_SIZES=(‘train’:20000,’validation’:5000)
 _NUM_CLASSES=2
 ```
 dataset_factory.py则在原来代码的基础上注册dogsVScats，新增如下内容
-```
+```py
 # 导入dogsVScats
 from datasets import dogsVScats
 
