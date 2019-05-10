@@ -5,10 +5,10 @@
 train
 ├─train
 │  ├─dogs
-│  ├─cats
-├─validation
-│  ├─dogs
-│  ├─cats
+|  └─cats
+└─validation
+   ├─dogs
+   └─cats
 
 ```
 + 实验目标：使用TF-slim模块预先构建的InceptionV3进行Fine-tune
@@ -39,11 +39,11 @@ files.upload()
 ```py
 !cp kaggle.json ~/.kaggle/
 ```
-查看
+查看dogs相关的数据集
 ```py
 !kaggle datasets list -s dogs
 ```
-出现dogs相关的数据集
+出现dogs相关的数据集列表
 ```
 ref                                                  title                                           size  lastUpdated          downloadCount  
 ---------------------------------------------------  ---------------------------------------------  -----  -------------------  -------------  
@@ -67,4 +67,92 @@ siddarthareddyt/cats-and-dogs                        Cats and Dogs              
 miljan/stanford-dogs-dataset-traintest               Stanford Dogs Dataset (Train/test)             197MB  2019-02-28 12:22:40             73  
 hellokugo/dogs-vs-cats                               dogs vs cats                                   211KB  2018-02-24 03:54:49             39  
 codingheerlen/catanddogs                             cat-and-dogs                                   221MB  2019-04-25 13:43:23              6  
+```
+进行下载
+```py
+!kaggle datasets download biaiscience/dogs-vs-cats --unzip
+```
+这时data目录下出现两个压缩文件，train.zip和test.zip，这里我们只需解压train.zip
+```py
+!unzip train.zip
+```
+解压完成后data目录下会生成train目录，目录下也就是我们需要用到的数据，数据准备也就到这里了。
+
+## 1. 实验预处理
+这一部分的目的是划分数据集，并生成对应的tfrecord文件。执行[preprocess.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/preprocess.py)
+```
+!python preprocess.py
+```
+就会在data目录下生成**dogsVScats_train_\*.tfrecord**和**dogsVScats_validation_\*.tfrecord**两个文件。
+然后在Exp5目录下导入TF-slim模块
+```py
+!git clone https://github.com/tensorflow/models/
+```
+导入完成后，进入modles/research/slim/datasets，把[dogsVScats.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dogsVScats.py)和[dataset_factory.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dataset_factory.py)上传进来。这里dogsVScats.py是copy的同目录下flower.py的代码，仅更改了如下地方
+```py
+_FILE_PATTERN=’dogsVScats_%s_*.tfrecord’
+SPLITS_TO_SIZES=(‘train’:20000,’validation’:5000)
+_NUM_CLASSES=2
+```
+dataset_factory.py则在原来代码的基础上注册dogsVScats，新增如下内容
+```
+# 导入dogsVScats
+from datasets import dogsVScats
+
+# 在datasets_map字典中，增加如下键值
+'dogsVScats':dogsVScats,
+```
+完成之后在slim目录下新建dogsVScats目录，然后在新建的dogsVScats目录下再新建如下四个目录：**data**、**train_dir**、**eval_dir**、**pretrained**。   
++ data:将前面步骤生成的**dogsVScats_train_\*.tfrecord**和**dogsVScats_validation_\*.tfrecord**两个文件copy进来
++ train_dir:保存训练过程中的日志和模型
++ eval_dir:保存验证过程中的日志
++ pretrained：保存Inception V3预训练模型，可点[此处](http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz)下载并解压，得到inception_v3.ckpt
+总结一下在slim模块下需要修改的文件目录如下
+```
+slim
+├─datasets
+│  ├─dogsVScats.py        # 新建的文件
+|  └─dataset_factory.py   # 修改的文件
+├─dogsVScats              # 新建的目录
+│  ├─data                 # 新建的目录
+|  │  ├─dogsVScats_train_*.tfrecord       # tfrecord文件
+|  |  └─dogsVScats_validation_*.tfrecord  # tfrecord文件
+│  ├─train_dir            # 新建的目录
+│  ├─eval_dir             # 新建的目录
+│  └─pretrained           # 新建的目录
+|     └─inception_v3.ckpt # 下载的预训练文件
+├─
+└─
+```
+## 2. 训练模型
+参数可以按需修改，在Colab中更改运行时，选择GPU。切换到slim目录下运行，接下来是漫长的等待：
+```py
+!python  train_image_classifier.py \
+  --train_dir=dogsVScats/train_dir \
+  --dataset_name=dogsVScats \
+  --dataset_split_name=train \
+  --dataset_dir=dogsVScats/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=dogsVScats/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=10000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=600 \
+  --save_summaries_secs=6 \
+  --log_every_n_steps=20 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+  ```
+## 3. 验证模型
+```
+!python eval_image_classifier.py \
+  --checkpoint_path=dogsVScats/train_dir \
+  --eval_dir=dogsVScats/eval_dir \
+  --dataset_name=dogsVScats \
+  --dataset_split_name=validation \
+  --dataset_dir=dogsVScats/data \
+  --model_name=inception_v3
 ```
