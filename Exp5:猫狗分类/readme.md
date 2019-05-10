@@ -29,18 +29,18 @@ os.chdir(r'/content/gdrive/My Drive/mylab/Exp5/data')
 print(os.getcwd())
 ```
 接下来步骤是下载Kaggle数据集。首先登陆Kaggle，依次点击 **My Account** -> **Create New API Token**，下载kaggle.json文件。再执行以下操作：
-```py
+```
 !mkdir -p ~/.kaggle
 
 from google.colab import files
 files.upload()
 ```
 上传刚刚下载的json文件，继续执行
-```py
+```
 !cp kaggle.json ~/.kaggle/
 ```
 查看dogs相关的数据集
-```py
+```
 !kaggle datasets list -s dogs
 ```
 出现dogs相关的数据集列表
@@ -69,11 +69,11 @@ hellokugo/dogs-vs-cats                               dogs vs cats               
 codingheerlen/catanddogs                             cat-and-dogs                                   221MB  2019-04-25 13:43:23              6  
 ```
 进行下载
-```py
+```
 !kaggle datasets download biaiscience/dogs-vs-cats --unzip
 ```
 这时data目录下出现两个压缩文件，train.zip和test.zip，这里我们只需解压train.zip
-```py
+```
 !unzip train.zip
 ```
 解压完成后data目录下会生成train目录，目录下也就是我们需要用到的数据，数据准备也就到这里了。
@@ -85,7 +85,7 @@ codingheerlen/catanddogs                             cat-and-dogs               
 ```
 就会在data目录下生成**dogsVScats_train_\*.tfrecord**和**dogsVScats_validation_\*.tfrecord**两个文件。
 然后在Exp5目录下导入TF-slim模块
-```py
+```
 !git clone https://github.com/tensorflow/models/
 ```
 导入完成后，进入modles/research/slim/datasets，把[dogsVScats.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dogsVScats.py)和[dataset_factory.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dataset_factory.py)上传进来。这里dogsVScats.py是copy的同目录下flower.py的代码，仅更改了如下地方
@@ -121,12 +121,12 @@ slim
 │  ├─eval_dir             # 新建的目录
 │  └─pretrained           # 新建的目录
 |     └─inception_v3.ckpt # 下载的预训练文件
-├─
-└─
+├─train_image_classifier.py
+└─eval_image_classifier.py
 ```
 ## 2. 训练模型
-参数可以按需修改，在Colab中更改运行时，选择GPU。切换到slim目录下运行，接下来是漫长的等待：
-```py
+参数可以按需修改，在Colab中更改运行时，选择GPU。切换到slim目录下[运行](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/cat_dog.ipynb)，接下来是漫长的等待：
+```
 !python  train_image_classifier.py \
   --train_dir=dogsVScats/train_dir \
   --dataset_name=dogsVScats \
