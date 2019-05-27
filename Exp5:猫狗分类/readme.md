@@ -155,3 +155,4 @@ slim
   --dataset_dir=dogsVScats/data \
   --model_name=inception_v3
 ```
+![实验结果](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/image.png?raw=true)
