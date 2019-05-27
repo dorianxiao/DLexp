@@ -23,7 +23,7 @@ PS：
       .
       .
       .
-   └─Exp9
+   └─Exp8
 ```
 现将Colab挂载Google Drive实现Colab操作Google Drive里的文件操作，接下来就可以实现读取里面的数据集了。
 ```py
