@@ -8,6 +8,6 @@ Exp1
 |─t10k-images-idx3-ubyte.gz
 └─t10k-labels-idx1-ubyte.gz
 ```
-基于MNIST数据集，构建CNN
+基于MNIST数据集，notebook构建CNN详细步骤如下
 + [Pytorch实现](https://github.com/dorianxiao/DLexp/blob/master/Exp1:%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/MNIST_CNN_Pytorch.ipynb)
 + [TensorFlow实现](https://github.com/dorianxiao/DLexp/blob/master/Exp1:%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/MNIST_CNN_TF.ipynb)
