@@ -6,4 +6,4 @@ Exp2
 ├─ dataset
 └─ train-saver
 ```
-+ [SimpleLPR车牌识别TensorFlow实现](https://github.com/dorianxiao/DLexp/blob/master/Exp2%3A%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/SimpleLPR.ipynb)，以地区识别为例。
++ [SimpleLPR车牌识别TensorFlow实现notebook](https://github.com/dorianxiao/DLexp/blob/master/Exp2%3A%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/SimpleLPR.ipynb)，以地区识别为例。
