@@ -1,11 +1,15 @@
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 # DLexps
 国科大深度学习春季课程实验，已更新的内容有
-1. Exp1:手写数字识别
+1. [Exp1:手写数字识别](https://github.com/dorianxiao/DLexp/tree/master/Exp1:手写数字识别)
 2. Exp2:车牌识别
 3. Exp3:神经网络语言模型
 4. Exp4:情感分类
 5. Exp5:猫狗分类
+6. Exp6:车牌检测
+7. Exp7:英文数字语音识别
+8. Exp8:声纹识别
+9. Exp9:神经机器翻译
 
 全部代码使用谷歌[Colab](https://colab.research.google.com/)运行，感谢谷歌。
 
