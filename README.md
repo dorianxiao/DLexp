@@ -15,7 +15,7 @@
 
 PS：     
 #### Colab挂载Google Drive
-本人在Google Drive中新建了实验文件夹，结构如下
+笔者在Google Drive中新建了实验文件夹，结构如下
 ```
 ├─mylab
 │  ├─Exp1
