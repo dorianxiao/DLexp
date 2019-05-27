@@ -17,13 +17,13 @@ PS：
 #### Colab挂载Google Drive
 笔者在Google Drive中新建了实验文件夹，结构如下
 ```
-├─mylab
-│  ├─Exp1
-│  ├─Exp2
-  .
-  .
-  .
-│  ├─Exp8
+└──mylab
+   ├─Exp1
+   ├─Exp2
+      .
+      .
+      .
+   └─Exp9
 ```
 现将Colab挂载Google Drive实现Colab操作Google Drive里的文件操作，接下来就可以实现读取里面的数据集了。
 ```py
