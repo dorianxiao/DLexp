@@ -1,4 +1,4 @@
-# 猫狗分类
+# Exp5:猫狗分类
 + 数据集来源：[Dogs vs. Cats Redux: Kernels Edition](https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data)
 > 解压train.zip，共25000张，其中猫狗各占一半。预处理需划分训练集(10000张猫、狗)和验证集(2500张猫、狗)
 ```
