@@ -1,3 +1,4 @@
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 # Exp9:神经机器翻译
 1. 在当前目录下
 ```git clone https://github.com/tensorflow/nmt/```
