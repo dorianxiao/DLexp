@@ -77,7 +77,6 @@ def save_spectrogram_tisv():
         # 从原来断开处继续处理
         if i < ind:
             continue
-
         print("从断开处继续处理...")
         speaker_path = os.path.join(audio_path, folder)     # path of each speaker
         print("第 %d 个 speaker 处理..." % i)
