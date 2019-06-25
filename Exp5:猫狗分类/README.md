@@ -88,7 +88,7 @@ codingheerlen/catanddogs                             cat-and-dogs               
 ```
 !git clone https://github.com/tensorflow/models/
 ```
-导入完成后，进入modles/research/slim/datasets，把[dogsVScats.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dogsVScats.py)和[dataset_factory.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dataset_factory.py)上传进来。这里dogsVScats.py是copy的同目录下flower.py的代码，仅更改了如下地方
+导入完成后，进入models/research/slim/datasets，把[dogsVScats.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dogsVScats.py)和[dataset_factory.py](https://github.com/dorianxiao/DLexp/blob/master/Exp5:%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/dataset_factory.py)上传进来。这里dogsVScats.py是copy的同目录下flower.py的代码，仅更改了如下地方
 ```py
 _FILE_PATTERN=’dogsVScats_%s_*.tfrecord’
 SPLITS_TO_SIZES=(‘train’:20000,’validation’:5000)
