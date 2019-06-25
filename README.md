@@ -8,7 +8,7 @@
 5. [Exp5:猫狗分类](https://github.com/dorianxiao/DLexp/tree/master/Exp5:猫狗分类)
 6. [Exp6:车牌检测](https://github.com/dorianxiao/DLexp/tree/master/Exp6:车牌检测)
 7. [Exp7:英文数字语音识别](https://github.com/dorianxiao/DLexp/tree/master/Exp7:英文数字语音识别)
-8. [Exp8:声纹识别](https://github.com/dorianxiao/DLexp/tree/master/Exp8:声纹识别)
+8. [Exp8:声纹识别](https://github.com/dorianxiao/DLexp/tree/master/Exp8:声纹识别)(没有GPU就别跑这个实验了，Colab12个小时也跑不完)
 9. [Exp9:神经机器翻译](https://github.com/dorianxiao/DLexp/tree/master/Exp9:神经机器翻译)
 
 全部代码使用谷歌[Colab](https://colab.research.google.com/)运行，感谢谷歌。
